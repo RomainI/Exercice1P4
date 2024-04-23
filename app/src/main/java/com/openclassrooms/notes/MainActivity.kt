@@ -1,18 +1,24 @@
 package com.openclassrooms.notes
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.openclassrooms.notes.databinding.ActivityMainBinding
 import com.openclassrooms.notes.repository.NotesRepository
+import com.openclassrooms.notes.viewmodel.NoteViewModel
 import com.openclassrooms.notes.widget.NoteItemDecoration
 import com.openclassrooms.notes.widget.NotesAdapter
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 /**
  * The main activity for the app.
  */
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     /**
@@ -23,6 +29,8 @@ class MainActivity : AppCompatActivity() {
     private val notesAdapter = NotesAdapter(emptyList())
 
     private val notesRepository = NotesRepository()
+
+    private var noteViewModel = NoteViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +48,7 @@ class MainActivity : AppCompatActivity() {
      */
     private fun collectNotes() {
         lifecycleScope.launch {
-            notesRepository.notes.collect {
+            noteViewModel.getNotes().collect {
                 notesAdapter.updateNotes(it)
             }
         }

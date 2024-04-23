@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.flow
 /**
  * Repository class for the notes.
  */
-class NotesRepository {
+open class NotesRepository {
 
     /**
      * The API service for interacting with notes.
