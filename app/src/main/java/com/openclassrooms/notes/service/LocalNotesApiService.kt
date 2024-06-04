@@ -7,9 +7,6 @@ import com.openclassrooms.notes.model.Note
  */
 class LocalNotesApiService : NotesApiService {
 
-    override fun addNote(note: Note) {
-        TODO("Not yet implemented")
-    }
 
     override fun getAllNotes(): List<Note> {
         return listOf(

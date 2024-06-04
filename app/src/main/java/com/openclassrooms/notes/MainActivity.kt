@@ -27,10 +27,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private val notesAdapter = NotesAdapter(emptyList())
-
     private val notesRepository = NotesRepository()
-
-    private var noteViewModel = NoteViewModel()
+    private var noteViewModel = NoteViewModel(notesRepository)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

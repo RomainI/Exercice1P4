@@ -7,18 +7,12 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-@HiltViewModel
-open class NoteViewModel() : ViewModel() {
+class NoteViewModel @Inject constructor(
+    private val notesRepository: NotesRepository
+) : ViewModel() {
 
-    @Inject
-    private var notesRepository = NotesRepository()
-
-
-     open fun getNotes(): Flow<List<Note>> {
+    fun getNotes(): Flow<List<Note>> {
          return notesRepository.notes
      }
 
-    fun addNotes(note: Note){
-//TODO
-    }
 }

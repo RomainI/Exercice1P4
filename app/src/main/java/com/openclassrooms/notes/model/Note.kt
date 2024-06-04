@@ -1,3 +1,3 @@
 package com.openclassrooms.notes.model
 
-data class Note(var title: String, var content: String)
+data class Note(val title: String, val content: String)

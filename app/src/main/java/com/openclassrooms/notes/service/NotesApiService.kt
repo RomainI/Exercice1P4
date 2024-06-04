@@ -8,12 +8,6 @@ import com.openclassrooms.notes.model.Note
 interface NotesApiService {
 
     /**
-     * Add a note
-     * @param note The note to add
-     */
-    fun addNote(note: Note)
-
-    /**
      * Returns all the notes
      * @return the list of notes
      */

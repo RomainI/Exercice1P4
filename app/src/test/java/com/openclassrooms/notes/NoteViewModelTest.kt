@@ -18,9 +18,8 @@ class NoteViewModelTest {
         val note1 = Note("1", "First note")
         val note2 = Note("2", "Second note")
         val mockRepository = mockk<NotesRepository>()
-        val viewModel = NoteViewModel()
+        val viewModel = NoteViewModel(mockRepository)
         val expectedNotes = listOf(note1, note2)
-
         coEvery { mockRepository.notes } returns flowOf(expectedNotes)
 
         // Act
